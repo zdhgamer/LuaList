@@ -13,6 +13,9 @@ local list = List:New()
 list:AddItemToLeft(10)
 list:AddItemToLeft(9)
 list:AddItemToRight(11)
+list:AddItemToRight(16)
+list:AddItemToRight(14)
+
 
 local first = list.firstNode
 
@@ -22,6 +25,14 @@ while(first~=nil) do
 end
 
 print('list的长度为'..list.count)
+
+print('删除一个14')
+list:RemoveOneItem(14)
+first = list.firstNode
+while(first~=nil) do
+    print(first.data)
+    first = first.rightPointer
+end
 
 list:ClearList()
 

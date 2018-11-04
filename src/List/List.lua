@@ -73,6 +73,39 @@ function List:AddItemToRight(value)
     self.lastNode = node
 end
 
+---@type function RemoveOneItem 从开头往后遍历，删除第一个遇到的值
+---@param value 值
+function List:RemoveOneItem(value)
+    if self.count == 0 then
+        return
+    else
+        local node = self.firstNode
+        while(node ~=nil) do
+            if node.data  == value then
+                local leftPointer  = node.leftPointer
+                local rightPointer = node.rightPointer
+                if leftPointer ~= nil then
+                    leftPointer.rightPointer = node.rightPointer
+                end
+                if rightPointer ~= nil then
+                    rightPointer.leftPointer = node.leftPointer
+                end
+                if node == self.firstNode then
+                    self.firstNode = node.rightPointer
+                end
+                if node == self.lastNode then
+                    self.lastNode  = node.leftPointer
+                end
+                node.leftPointer = nil
+                node.rightPointer = nil
+                break
+            else
+                node = node.rightPointer
+            end
+        end
+    end
+end
+
 ---@type function Count 返回个数
 ---@return self.count Number 返回值
 function List:Count()

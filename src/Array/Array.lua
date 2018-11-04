@@ -1,4 +1,4 @@
----@class 顺序表
+---@class 顺序表 left 记录左边当前值的位置 Right记录右边下一个值的位置
 Array = {left=0,right=0}
 
 Array.__index = Array;
@@ -49,7 +49,6 @@ function Array:AddRangeToLeft(otherArray)
     local otherIndex = otherArray:GetRightIndex()
     for i = 1, otherArray:Count() do
         self[self.left-1] = otherArray[otherIndex-i+1]
-        otherIndex = otherIndex - 1
         self.left = self.left - 1
     end
 
