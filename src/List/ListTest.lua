@@ -34,6 +34,22 @@ while(first~=nil) do
     first = first.rightPointer
 end
 
+print('测试迭代器')
+local listNext = list:Next()
+local value = listNext()
+while(value~=nil) do
+    print(value)
+    value = listNext()
+end
+
+print('再次测试迭代器')
+local listNext = list:Next()
+local value = listNext()
+while(value~=nil) do
+    print(value)
+    value = listNext()
+end
+
 list:ClearList()
 
 print('list的长度为'..list.count)

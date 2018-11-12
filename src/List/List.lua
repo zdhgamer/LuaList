@@ -4,7 +4,7 @@
 --- DateTime: 2018/11/2 16:34
 ---
 
----@type 链表node
+---@class ListNode 链表节点
 ListNode = {leftPointer,rightPointer,data}
 
 ListNode.__index = ListNode
@@ -19,7 +19,7 @@ function ListNode:New()
     return result
 end
 
----@type 双向链表
+---@class List 双向链表
 List = {count=0,firstNode=nil,lastNode = nil}
 
 List.__index = List
@@ -102,6 +102,20 @@ function List:RemoveOneItem(value)
             else
                 node = node.rightPointer
             end
+        end
+    end
+end
+
+---@type function Next 迭代器
+function List:Next()
+    local temp = self.firstNode
+    return function()
+        if temp == nil then
+            return nil
+        else
+            local data = temp.data
+            temp = temp.rightPointer
+            return data
         end
     end
 end

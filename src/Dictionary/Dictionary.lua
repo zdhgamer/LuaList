@@ -4,7 +4,7 @@
 --- DateTime: 2018/11/4 21:38
 ---
 
----@type 字典 Dictionary
+---@class  Dictionary 字典 Dictionary
 Dictionary = {}
 
 Dictionary.__index  = Dictionary
@@ -73,11 +73,26 @@ function Dictionary:GetValues()
     return result
 end
 
+---@type function Next 迭代器
+function Dictionary:Next()
+    local keys = self:GetKeys()
+    local temp = 1
+    return function()
+        if temp <= #keys then
+            local result = self:GetValueByKey(keys[temp])
+            temp = temp + 1
+            return result
+        else
+            return nil
+        end
+    end
+end
+
 ---@type function Count 获取存储的个数
 ---@return 返回值
 function Dictionary:Count()
     local temp = self:GetKeys()
     return #temp
-    end
+end
 
 return Dictionary
