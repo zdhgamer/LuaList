@@ -6,14 +6,14 @@
 
 
 ---@class Queue 队列
-Queue = {left,right}
+Queue = { left, right }
 
 Queue.__index = Queue
 
 ---@type function New 构造函数
 function Queue:New()
     local result = {}
-    setmetatable(result,Queue)
+    setmetatable(result, Queue)
     result.left = 0
     result.right = 0
     return result
@@ -21,12 +21,22 @@ end
 
 ---@type function PopItem 弹出最开头的那个数据
 function Queue:PopItem()
-    
+    if self.left >= self.right then
+        return nil
+    else
+        self.left = self.left + 1
+        return self[self.left]
+    end
 end
 
 ---@type function PushItem 往最后加入数据
 function Queue:PushItem(value)
-    
+    self[self.right] = value
+    self.right = self.right + 1
+end
+
+function Queue:Count()
+    return self.right - self.left
 end
 
 return Queue;

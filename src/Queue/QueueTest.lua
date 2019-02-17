@@ -4,3 +4,19 @@
 --- DateTime: 2018/11/5 15:23
 ---
 
+require('Queue.Queue')
+
+local a = Queue:New()
+
+--测试加入队列
+a:PushItem(1)
+a:PushItem(2)
+for i = a.left, a.right-1 do
+    print(a[i])
+end
+
+--测试移除队列
+a:PopItem()
+for i = a.left, a.right-1 do
+    print(a[i])
+end
