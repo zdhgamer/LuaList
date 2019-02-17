@@ -44,5 +44,12 @@ print('dic的存储个数为' .. dic:Count())
 
 print([[是否包含10]] .. tostring(dic:Contain(10)))
 
+print('测试迭代器')
+local dicNext = dic:Next()
+local value = dicNext()
+while(value~=nil) do
+    print(value)
+    value = dicNext()
+end
 
 print('测试Dictionary结束')

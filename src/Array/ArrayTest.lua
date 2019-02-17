@@ -90,6 +90,16 @@ for i = myArray1:GetLeftIndex(), myArray1:GetRightIndex() do
     print('myArray1的下标为'..i ..'的值为'.. myArray1:GetItemByIndex(i))
 end
 
+
+print('测试迭代器')
+
+local arrayNext = myArray1:Next()
+local value = arrayNext()
+while(value~=nil) do
+    print(value)
+    value = arrayNext()
+end
+
 myArray2:ClearArray()
 print('myArray2的item总数量'..myArray2:Count())
 
