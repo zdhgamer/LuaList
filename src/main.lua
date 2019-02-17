@@ -1,12 +1,13 @@
-require('Array.ArrayTest')
-print('\n\n\n\n\n')
-require('List.ListTest')
-require("Dictionary.DictionaryTest")
-
-function tableIsEmpty(target)
-    return _G.next(target) == nil
+function MyReverse(value)
+    local result= ""
+    local temp = ""
+    for i = #value, 1,-1 do
+        temp = string.sub(value,i,i)
+        result = result .. temp
+    end
+    return result
 end
 
-local t = {}
+a = "123456789"
 
-print(tableIsEmpty(t))
+print(MyReverse(a))
